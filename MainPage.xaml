@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetronomeApp.MainPage"
+             BackgroundColor="Black"
+             Title="Mr. Mellow Cello's Marvelous Musical Metronome">
+
+    <StackLayout>
+        <Frame 
+            />
+        <Grid>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="Beats"/>
+            </Grid.GestureRecognizers>
+            <StackLayout
+                HeightRequest="310">
+                <Polyline 
+                    Points="0,300 150,0 300,300 0,300"
+                    Stroke="#ffac30"
+                    HorizontalOptions="Center"
+                    StrokeThickness="2"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    x:Name="TriangleFlash"/>
+                <Polyline 
+                    Points="0,303 153,0 303,303 0,303"
+                    Stroke="#ffac30"
+                    HorizontalOptions="Center"
+                    StrokeThickness="6"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    x:Name="TriangleBig"
+                    HeightRequest="310"
+                    IsVisible="False"/>
+                <Polyline
+                    Points="0,303 153,0 303,303 0,303"
+                    Stroke="White"
+                    HorizontalOptions="Center"
+                    StrokeThickness="6"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    x:Name="TriangleEmphasizedBig"
+                    HeightRequest="310"
+                    IsVisible="False"/>
+            </StackLayout>
+            <Entry 
+                Text="80"
+                x:Name="SliderBeats"
+                Grid.Column="0"
+                Grid.Row="0"
+                TextColor="White"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="45"
+                TextChanged="SliderBeats_TextChanged"/>
+        </Grid>
+        <Slider
+        WidthRequest="370"
+        HeightRequest="30"
+        MinimumTrackColor="LightGray"
+        MaximumTrackColor="DodgerBlue"
+        ThumbColor="White"
+        Minimum="10"
+        Maximum="300"
+        Value="80"
+        Margin="10"
+        ValueChanged="SliderTempo_ValueChanged"
+        x:Name="SliderTempo"/>
+        <Grid HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="70"/>
+                <ColumnDefinition
+                    Width="70"/>
+                <ColumnDefinition
+                    Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Entry
+                Text="4"
+                FontSize="30"
+                TextColor="White"
+                Grid.Column="0"
+                TextChanged="Entry_TextChanged"/>
+            <Label
+                Text="/"
+                FontSize="30"
+                TextColor="White"
+                Grid.Column="1"
+                HorizontalOptions="Center"/>
+            <Entry
+                Text="4"
+                FontSize="30"
+                TextColor="White"
+                Grid.Column="2"
+                TextChanged="Entry_TextChanged_1"/>
+
+        </Grid>
+        <Grid HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="220"/>
+                <ColumnDefinition
+                    Width="220"/>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="White" Grid.Column="0" Margin="5" x:Name="Soundbox1" ClassId="Soundbox1">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="ChooseSoundbox"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Unemphasized"
+                    FontSize="19"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Frame BackgroundColor="White" Grid.Column="1" Margin="5" x:Name="Soundbox2" ClassId="Soundbox2">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="ChooseSoundbox"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Emphasized"
+                    FontSize="19"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center"/>
+            </Frame>
+        </Grid>
+        <Grid HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="110"/>
+                <ColumnDefinition
+                    Width="110"/>
+                <ColumnDefinition
+                    Width="110"/>
+            </Grid.ColumnDefinitions>
+            <Picker x:Name="BeatSelector" HorizontalOptions="Center" SelectedIndexChanged="BeatSelector_SelectedIndexChanged" Grid.Column="1">
+            </Picker>
+            <Switch
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Column="2"
+                OnColor="#ffac30"
+                x:Name="BeatEmphasizer"
+                Toggled="BeatEmphasizer_Toggled"/>
+        </Grid>
+        <Grid HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="110"/>
+                <ColumnDefinition
+                    Width="110"/>
+                <ColumnDefinition
+                    Width="110"/>
+            </Grid.ColumnDefinitions>
+            <Picker x:Name="ModeSelector" HorizontalOptions="Center" SelectedIndex="0" Grid.Column="1">
+                <Picker.Items>
+                    <x:String>
+                        Manual
+                    </x:String>
+                    <x:String>
+                        Tapped
+                    </x:String>
+                </Picker.Items>
+            </Picker>
+        </Grid>
+    </StackLayout>
+    
+</ContentPage>
